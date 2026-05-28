@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const attendanceRoutes = require("./routes/attendanceRoutes");
+const leaveRoutes = require("./routes/leaveRoutes");
 
 const app = express();
 
@@ -35,6 +36,8 @@ app.post("/api/auth/login", async (req, res) => {
 
 // Mount attendance routes
 app.use("/api/attendance", attendanceRoutes);
+// At the top with your other requires
+app.use("/api/leave", leaveRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
